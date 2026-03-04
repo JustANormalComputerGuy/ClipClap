@@ -38,50 +38,6 @@
             <small>ClipClap v0.1.0</small>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-        <script>
-            function escapeHtml(str) {
-                if (str == null) return '';
-                return String(str)
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;')
-                    .replace(/"/g, '&quot;')
-                    .replace(/'/g, '&#39;');
-            }
-            function NewMessage(text, topic, time) {
-                const t = escapeHtml(topic || 'No topic');
-                const body = escapeHtml(text || '');
-                const when = escapeHtml(time || new Date().toLocaleString());
-                return `<article class="message"><h4>${when} : ${t}</h4><p>${body}</p></article>`;
-            }
-            document.addEventListener('DOMContentLoaded', () => {
-                const topic = document.getElementById('topic');
-                const text = document.getElementById('text');
-                const send = document.getElementById('send');
-                const messages = document.getElementById('messages');
-
-                // connect to default Gun peers
-                const gun = Gun();
-                const chat = gun.get('clipclap_chat');
-
-                // listen for all messages (map->on ensures we get existing & future)
-                chat.map().on((data, id) => {
-                    if (!data || !data.time) return; // skip tombstones
-                    const wrapper = document.createElement('div');
-                    wrapper.innerHTML = NewMessage(data.text, data.topic, data.time);
-                    messages.appendChild(wrapper);
-                });
-
-                function addMessage() {
-                    const msg = { text: text.value, topic: topic.value, time: new Date().toLocaleString() };
-                    chat.set(msg);
-                    text.value = '';
-                    topic.value = '';
-                }
-
-                if (send) send.addEventListener('click', addMessage);
-                if (text) text.addEventListener('keydown', (e) => { if (e.key === 'Enter') addMessage(); });
-            });
-        </script>
+        <script src="script.js"></script>
     </body>
 </html>
