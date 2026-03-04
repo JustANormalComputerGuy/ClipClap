@@ -1,3 +1,5 @@
+// warning: this is an old script.
+
 function escapeHtml(str) {
     if (str == null) return '';
     return String(str)
