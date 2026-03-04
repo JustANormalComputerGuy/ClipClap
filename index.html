@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>ChipClap - Home</title>
+        <style>
+            body { 
+                font-family: system-ui, sans-serif; 
+                padding: 1rem; 
+            }
+
+            .inputs { 
+                display: flex; 
+                gap: 0.5rem; 
+                align-items: center; 
+            }
+
+            #messages { 
+                margin-top: 1rem; 
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to ClipClap [v0.1.0]</h1>
+        <div class="inputs">
+            <input id="topic" placeholder="Topic" spellcheck="true">
+            <input id="text" placeholder="Text" spellcheck="true">
+            <button id="send">Send</button>
+        </div>
+        <p>Please: <strong>Do Not</strong> state name, address or other personal information</p>
+        <p>This is a public website! <strong>Do Not</strong> do anything you know is wrong!</p>
+        <hr>
+        <div id="messages" aria-live="polite">
+            <!-- the conversation starts here -->
+        </div>
+        <footer>
+            <small>ClipClap v0.1.0</small>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>
